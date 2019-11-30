@@ -1,0 +1,33 @@
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <a mat-button routerLink="/"> <h1>SpeedSouls</h1></a>
+    <span class="example-spacer"></span>
+
+    <div *ngIf="user.uid | async as uid; else elseBlock">
+      <button
+        *ngIf="true; login"
+        mat-raised-button
+        routerLink="/"
+        routerLinkActive="active"
+        class="login"
+        (click)="user.logout()"
+      >
+        Log Out
+      </button>
+    </div>
+    <ng-template #elseBlock>
+      <button #login mat-raised-button class="login" (click)="user.login()">
+        Log In
+      </button>
+    </ng-template>
+
+    <button
+      mat-raised-button
+      color="accent"
+      routerLink="/createRace"
+      routerLinkActive="active"
+    >
+      Create Race
+    </button>
+  </mat-toolbar-row>
+</mat-toolbar>

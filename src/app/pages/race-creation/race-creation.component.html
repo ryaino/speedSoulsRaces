@@ -1,0 +1,41 @@
+<form class="example-form">
+  <h4>Race Creation</h4>
+  <mat-form-field class="example-full-width">
+    <textarea
+      [(ngModel)]="raceTitle"
+      matInput
+      placeholder="Race Title"
+      name="titleInput"
+    ></textarea>
+  </mat-form-field>
+
+  <mat-form-field class="example-full-width">
+    <mat-label>Game</mat-label>
+    <mat-select
+      [(ngModel)]="selectedGame"
+      (selectionChange)="gameSelected()"
+      name="gameSelect"
+    >
+      <mat-option *ngFor="let game of games" [value]="game.abbreviation">
+        {{ game.names.international }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field class="example-full-width">
+    <mat-label>Category</mat-label>
+    <mat-select
+      [(ngModel)]="selectedCategory"
+      (selectionChange)="categorySelected()"
+      name="categorySelect"
+    >
+      <mat-option *ngFor="let category of categories" [value]="category.id">
+        {{ category.name }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <button mat-raised-button color="accent" (click)="submitRace()">
+    Create
+  </button>
+</form>
